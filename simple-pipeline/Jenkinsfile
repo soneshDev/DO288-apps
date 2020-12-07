@@ -39,11 +39,37 @@ pipeline {
                 
             }
         }
-
-
-        stage('stage 3') {
+	
+	stage('stage 3') {
             steps {
-                sh 'echo hello from stage 3!. This is the last stage... Sonesh'
+                sh 'echo hello from stage 3!. This is added by Sonesh...'
+            }
+        }
+        
+        stage('stage 4') {
+            steps {
+                sh 'echo hello from stage 4!. This is added by Sonesh...'
+            }
+        }
+        
+        stage('stage 5') {
+            steps {
+                sh 'echo hello from stage 5!. This is added by Sonesh...'
+            }
+        }
+        
+        stage('stage manual approval again') {
+            steps {
+            		timeout(time: 60,unit: 'MINUTES'){
+            		 input message: "Move to stage 6 okay?"
+            		}
+                
+            }
+        }
+
+        stage('stage 6') {
+            steps {
+                sh 'echo hello from stage 6!. This is the last stage... Sonesh'
             }
         }
 
