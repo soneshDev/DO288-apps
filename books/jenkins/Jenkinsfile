@@ -37,14 +37,14 @@ pipeline {
         stage('Run Unit Tests') {
             steps {
                 echo '### Running unit tests ###'
-                sh 'cd books; npm test'
+                
             }
         }
 
         stage('Run Linting Tools') {
             steps {
                 echo '### Running eslint on code ###'
-                
+                sh 'cd books; npm run lint'
             }
         }
 
