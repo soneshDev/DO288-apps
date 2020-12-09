@@ -1,0 +1,71 @@
+pipeline {
+    options {
+        // set a timeout of 60 minutes for this pipeline
+        timeout(time: 60, unit: 'MINUTES')
+    }
+    agent {
+      node {
+        label 'master'
+      }
+    }
+    
+environment {
+        //TODO: Customize these variables for your environment
+        DEV_PROJECT = "movies-dev"
+        STAGE_PROJECT = "movies-stage"
+        APP_GIT_URL = "https://github.com/soneshDev/DO288-apps#review-cicd"
+        NEXUS_SERVER = "https://repo.maven.apache.org/maven2/"
+
+        // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
+        APP_NAME = "movies"
+    }
+
+    stages {
+
+        stage('clear dev project confirmation') {
+                 steps {
+                timeout(time: 60, unit: 'MINUTES') {
+                    input message: "Is okay to delete the dev project and app ?"
+                }
+            }
+        }
+
+ 	stage('clearing app and project in DEV env') {
+            steps {
+                echo '### Cleaning existing resources in DEV env ###'
+             
+                sh '''
+                        oc project ${DEV_PROJECT}
+                        oc delete all -l app=${APP_NAME}
+                        sleep 5
+                   '''
+               echo "project ${DEV_PROJECT} has been deleted along with ${APP_NAME} app"
+
+            }
+        }
+        
+        stage('clear stage project confirmation') {
+                 steps {
+                timeout(time: 60, unit: 'MINUTES') {
+                    input message: "Is okay to delete the Stage project and app ?"
+                }
+            }
+        }
+
+ 	stage('clearing app and project in Stag env') {
+            steps {
+                echo '### Cleaning existing resources in DEV env ###'
+             
+                sh '''
+                        oc project ${STAGE_PROJECT}
+                        oc delete all -l app=${APP_NAME}
+                        sleep 5
+                   '''
+               echo "project ${STAGE_PROJECT} has been deleted along with ${APP_NAME} app"
+
+            }
+        }
+       
+
+    }
+}
