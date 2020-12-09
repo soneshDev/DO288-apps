@@ -37,6 +37,7 @@ environment {
                 sh '''
                         oc project ${DEV_PROJECT}
                         oc delete all -l app=${APP_NAME}
+                        oc delete all -l build=${APP_NAME}
                         sleep 5
                    '''
                echo "project ${DEV_PROJECT} has been deleted along with ${APP_NAME} app"
