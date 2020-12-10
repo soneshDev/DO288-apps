@@ -4,3 +4,4 @@ metadata:
   name: env-config
 data:
   APP_MSG: sample external configuration by sonesh
+  SONESH_MSG: This is another one for fun
