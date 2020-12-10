@@ -5,5 +5,5 @@ metadata:
 data:
   DATABASE_USER: mydbuser
   DATABASE_PASSWORD: Thakur@12
-  DATABASE_SVC_HOSTNAME: sonesh-VirtualBox
+  DATABASE_SVC_HOSTNAME: 192.168.56.103
   DATABASE_NAME: todo
