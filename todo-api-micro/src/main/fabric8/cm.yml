@@ -7,5 +7,5 @@ data:
   DATABASE_USER: todoapp
   DATABASE_PASSWORD: redhat123
   DATABASE_NAME: todo
-  DATABASE_SVC_HOSTNAME: mysql.ocp-ap45.prod.nextcle.com
+  DATABASE_SVC_HOSTNAME: tododb 
 
