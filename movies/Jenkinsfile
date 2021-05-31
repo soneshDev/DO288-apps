@@ -124,9 +124,7 @@ return (it.object().status.phase == "Running")
                 }
                 script {
                     openshift.withCluster() {
-			openshift.tag("${DEV_PROJECT}/${APP_NAME}:latest", "${STAGE_PROJECT}/
-
-${APP_NAME}:stage")
+			openshift.tag("${DEV_PROJECT}/${APP_NAME}:latest", "${STAGE_PROJECT}/${APP_NAME}:stage")
                     }
                 }
             }
